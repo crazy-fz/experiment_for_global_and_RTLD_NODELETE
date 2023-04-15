@@ -1,10 +1,10 @@
-#include "b_pb.h"
+#include "a_pb.h"
 extern "C" {
 
 	void run_func() {
-		b_pb_print();
-		b_pb_assign();
-		b_pb_print();
+		a_pb_print();
+		a_pb_assign();
+		a_pb_print();
 	}
 
 }

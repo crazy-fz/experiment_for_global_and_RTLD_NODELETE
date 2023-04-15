@@ -1,4 +1,4 @@
-在master分支基础上，将a_pb和a.cpp编译成一个so，实验结果相同。
+在test_for_obj分支基础上，测试.o文件被重复引用的复杂情况，实验结果相同。
 
 一次简单的实验，验证以RTLD_NODELETE方式dlopen动态库a和b，如果a和b都间接依赖动态库base，那么a和b访问的的base中的全局变量是否同一份。
 

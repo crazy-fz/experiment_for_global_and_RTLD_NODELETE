@@ -32,8 +32,8 @@ $(BIN_BASE):$(OBJ_BASE)
 $(BIN_A):$(OBJ_A) $(OBJ_A_PB) $(BIN_BASE)
 	$(CXX) $(CFLAGS) -o $@ $(OBJ_A) $(OBJ_A_PB) $(BIN_BASE) -lbase
 
-$(BIN_B):$(OBJ_B) $(OBJ_B_PB) $(BIN_BASE)
-	$(CXX) $(CFLAGS) -o $@ $(OBJ_B) $(OBJ_B_PB) $(BIN_BASE) -lbase
+$(BIN_B):$(OBJ_B) $(OBJ_A_PB) $(BIN_BASE)
+	$(CXX) $(CFLAGS) -o $@ $(OBJ_B) $(OBJ_A_PB) $(BIN_BASE) -lbase
 
 $(EXEC_MAIN):main.cpp
 	$(CXX) -std=c++98 -O3 -o $@ $^ -ldl -lstdc++ -L./
