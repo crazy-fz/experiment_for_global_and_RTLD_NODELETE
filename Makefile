@@ -1,4 +1,5 @@
 CXX = g++
+CXXFLAGS = -std=c++98 -fPIC -shared -O3 -I. -L.
 CFLAGS = -std=c++98 -fPIC -shared -O3 -I. -L.
 
 src_files = a.cpp b.cpp
@@ -10,8 +11,9 @@ BIN_A = a.so
 BIN_B = b.so
 EXEC_MAIN = main.out
 
-OBJ_A_PB = a.pb.o
-OBJ_B_PB = b.pb.o
+OBJ_BASE = base.o
+OBJ_A_PB = a_pb.o
+OBJ_B_PB = b_pb.o
 OBJ_A = a.o
 OBJ_B = b.o
 
@@ -24,21 +26,8 @@ CPP_B = b.cpp
 all: $(bin_files)
 	rm -f $(obj_files)
 
-$(BIN_BASE):$(CPP_BASE)
+$(BIN_BASE):$(OBJ_BASE)
 	$(CXX) $(CFLAGS) -o $@ $^
-
-$(OBJ_A_PB):$(CPP_A_PB)
-	$(CXX) $(CFLAGS) -c -o $@ $^
-
-$(OBJ_B_PB):$(CPP_B_PB)
-	$(CXX) $(CFLAGS) -c -o $@ $^
-
-$(OBJ_A):$(CPP_A)
-	$(CXX) $(CFLAGS) -c -o $@ $^
-
-$(OBJ_B):$(CPP_B)
-	$(CXX) $(CFLAGS) -c -o $@ $^
-
 
 $(BIN_A):$(OBJ_A) $(OBJ_A_PB) $(BIN_BASE)
 	$(CXX) $(CFLAGS) -o $@ $(OBJ_A) $(OBJ_A_PB) $(BIN_BASE) -lbase
